@@ -1,4 +1,3 @@
-from functools import reduce
 from typing import Optional
 
 from back.board import Board
@@ -12,7 +11,7 @@ class BoardNotInitializedException(Exception):
 
 
 class MineGameManager:
-    def __init__(self, board=None, board_filler=BoardFiller):
+    def __init__(self, board: Board = None, board_filler=BoardFiller):
         self._board = None
         self.flagged_left = None
         self.actual_flagged_left = None
@@ -22,12 +21,13 @@ class MineGameManager:
             self.set_board(board)
         self.board_filler = board_filler
 
-    def set_board(self, board):
+    def set_board(self, board: Board):
         self._board = board
         self.flagged_left = board.mines_count
         self.actual_flagged_left = board.mines_count
         self.empty_left = (board.size[0] * board.size[1]) - board.mines_count
         self._board_initialized = False
+        return self
 
     def is_board_inited(self):
         return self._board_initialized
@@ -105,5 +105,5 @@ class MineGameManager:
             self.flagged_left -= 1
             cell.is_flagged = True
 
-    def is_done(self):
+    def is_done(self):\
         return not self.actual_flagged_left and not self.empty_left

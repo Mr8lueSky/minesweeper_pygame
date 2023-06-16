@@ -95,6 +95,7 @@ class Solver:
 def reinit():
     global solver, is_working
     game.reset()
+    game.event_handler.block_quit = True
     solver = Solver(game.gm, threads=True)
     solver.working = is_working
     game.plugins.insert(0, solver)
@@ -102,8 +103,9 @@ def reinit():
 
 
 is_working = False
-mines_count = 500
-game = MineGame(mines_count=mines_count, board_size=(50, 50))
+mines_count = 100
+game = MineGame(mines_count=mines_count, board_size=(25, 25))
+game.event_handler.block_quit = True
 set_full_screen(game, center=True, display=0)
 solver = Solver(game.gm, threads=True)
 while True:

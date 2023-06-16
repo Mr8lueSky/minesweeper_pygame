@@ -1,4 +1,4 @@
 env/
 draft.py
-.*
+.idea
 __pycache__

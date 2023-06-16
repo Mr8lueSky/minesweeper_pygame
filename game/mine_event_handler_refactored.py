@@ -16,6 +16,18 @@ class MineEventHandler:
             KEYDOWN: [self._on_key_down]
         }
 
+    def set_gm(self, gm):
+        self.gm = gm
+        return self
+
+    def set_fboard(self, fboard):
+        self.fboard = fboard
+        return self
+
+    def set_info_panel(self, info_panel):
+        self.info_panel = info_panel
+        return info_panel
+
     def quit(self, event=None):
         print("Quiting")
         raise Exception("Quiting")
